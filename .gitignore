@@ -2,4 +2,4 @@ __pycache__
 .env
 .learn
 .venv
-./src/solution.ipynb
+src/solution.ipynb
