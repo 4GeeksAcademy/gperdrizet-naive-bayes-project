@@ -6,7 +6,12 @@
 	"onCreateCommand": "pip3 install --upgrade pip && pip3 install --user -r requirements.txt",
 	"customizations": {
 	  "vscode": {
-		"settings": {"jupyter.kernels.excludePythonEnvironments": ["/usr/bin/python3"]},
+		"settings": {
+			"jupyter.kernels.excludePythonEnvironments": ["/usr/bin/python3"],
+			"remote.portsAttributes": {
+				"ipykernel_launcher": {"onAutoForward": "ignore"}
+			}
+		},
 		"extensions": [
 		  "-dbaeumer.vscode-eslint",
 		  "ms-python.python",
@@ -16,9 +21,7 @@
 	  }
 	},
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "mkdir data && mkdir data/raw && mkdir data/interim && mkdir data/processed && mkdir models"
+	"postCreateCommand": "mkdir data && mkdir data/raw && mkdir data/interim && mkdir data/processed && mkdir models",
+	"postAttachCommand": "htop"
 }
