@@ -6,12 +6,14 @@ A comprehensive machine learning project focused on sentiment analysis of Google
 
 ## Project Overview
 
-This project analyzes Google Play Store app reviews to classify sentiment polarity (positive/negative) using various Naive Bayes algorithms. The dataset provides hands-on experience with:
+This project analyzes Google Play Store app reviews to classify sentiment polarity (positive/negative) using various Naive Bayes algorithms and advanced dimensionality reduction techniques. The dataset provides hands-on experience with:
 
-- Text data preprocessing and vectorization
-- Natural Language Processing (NLP) techniques
-- Multiple Naive Bayes classifier variants comparison
-- Cross-validation and model evaluation
+- Advanced text preprocessing including lemmatization and filtering
+- Natural Language Processing (NLP) techniques with NLTK
+- Multiple Naive Bayes classifier variants comparison (including ComplementNB)
+- Dimensionality reduction using PCA and Feature Agglomeration
+- Hyperparameter optimization with GridSearchCV
+- Cross-validation and model evaluation with stratified sampling
 - Confusion matrix analysis and performance metrics
 - Exploratory Data Analysis (EDA) for text data
 
@@ -78,6 +80,7 @@ This project analyzes Google Play Store app reviews to classify sentiment polari
 ├── models/               # Trained model storage directory
 │
 ├── notebooks/            # Jupyter notebook directory
+│   ├── functions.py      # Helper functions for notebooks
 │   ├── mvp.ipynb         # Assignment notebook
 │   └── solution.ipynb    # Solution notebook
 │
@@ -99,55 +102,79 @@ The data is sourced from: `https://raw.githubusercontent.com/4GeeksAcademy/naive
 
 ## Learning Objectives
 
-1. **Data Preprocessing**: Load and prepare text data for machine learning
-2. **Text Vectorization**: Convert text reviews into numerical features using CountVectorizer
+1. **Advanced Text Preprocessing**: Load, clean, and prepare text data with sophisticated NLP techniques
+2. **Text Vectorization**: Convert text reviews into numerical features using CountVectorizer with feature selection
 3. **Train-Test Split**: Properly partition data for model training and evaluation
-4. **Exploratory Data Analysis**: Analyze review length distributions and text patterns
-5. **Model Comparison**: Compare three Naive Bayes variants:
+4. **Exploratory Data Analysis**: Analyze review length distributions, filter outliers, and examine text patterns
+5. **Model Comparison**: Compare multiple classification algorithms:
+   - **Logistic Regression**: Linear baseline model for comparison
    - **Multinomial Naive Bayes**: Ideal for discrete count data (word frequencies)
    - **Gaussian Naive Bayes**: Assumes continuous features with normal distribution
    - **Bernoulli Naive Bayes**: Works with binary/boolean features
-6. **Cross-Validation**: Use k-fold cross-validation for robust model evaluation
-7. **Performance Visualization**: Create confusion matrices and performance plots
-8. **Baseline Comparison**: Compare against simple baseline models
+   - **Complement Naive Bayes**: Enhanced version of Multinomial NB for imbalanced datasets
+6. **Dimensionality Reduction**: Apply PCA and Feature Agglomeration for improved performance
+7. **Hyperparameter Optimization**: Use GridSearchCV for automated parameter tuning
+8. **Cross-Validation**: Use stratified k-fold cross-validation for robust model evaluation
+9. **Performance Visualization**: Create confusion matrices and hyperparameter optimization plots
 
 ## Key Features & Techniques
 
 ### Text Preprocessing
+- **Advanced Text Cleaning**: Lowercase conversion, number and punctuation removal
+- **Lemmatization**: Using NLTK's WordNetLemmatizer for word normalization
 - **Stop Words Removal**: Filter out common English words using scikit-learn
+- **Review Length Filtering**: Remove extremely short and long reviews for data quality
 - **Vectorization**: Transform text into numerical word count matrices
-- **Feature Engineering**: Extract meaningful features from raw text data
+- **Feature Selection**: Filter features based on frequency thresholds to reduce noise
 
 ### Model Evaluation
-- **Cross-Validation**: 7-fold cross-validation for reliable performance estimates
-- **Confusion Matrix**: Detailed breakdown of classification performance
+- **Stratified Cross-Validation**: 10-fold stratified cross-validation for reliable performance estimates
+- **Hyperparameter Optimization**: GridSearchCV for automated parameter tuning
+- **Confusion Matrix**: Detailed breakdown of classification performance for multiple models
 - **Accuracy Metrics**: Comprehensive evaluation of model effectiveness
-- **Baseline Comparison**: Performance comparison with simple heuristic models
+- **Pipeline Optimization**: Advanced model pipelines combining dimensionality reduction with classification
+
+### Dimensionality Reduction
+- **Principal Component Analysis (PCA)**: Linear dimensionality reduction with variance analysis
+- **Feature Agglomeration**: Hierarchical clustering of features to reduce dimensionality
+- **Cross-Correlation Analysis**: Spearman correlation analysis of features
+- **Pipeline Integration**: Seamless integration of reduction techniques with classifiers
 
 ### Exploratory Data Analysis
-- **Review Length Analysis**: Distribution of review character counts
-- **Feature Distribution**: Analysis of word frequency patterns
-- **Data Quality Assessment**: Identification of outliers and data quality issues
+- **Review Length Analysis**: Distribution analysis with outlier detection and filtering
+- **Feature Distribution**: Analysis of word frequency patterns and feature selection
+- **Data Quality Assessment**: Systematic identification and handling of data quality issues
+- **Visualization**: Comprehensive plotting of distributions and model performance
 
 ## Technologies Used
 
 - **Python 3.11**: Core programming language
 - **Pandas 2.3.1**: Data manipulation and analysis
 - **NumPy 2.3.2**: Numerical computing and array operations
-- **Scikit-learn 1.7.1**: Machine learning algorithms and evaluation metrics
+- **Scikit-learn 1.7.1**: Machine learning algorithms, pipelines, and evaluation metrics
+- **NLTK**: Natural Language Toolkit for advanced text processing and lemmatization
 - **Matplotlib 3.10.3**: Data visualization and plotting
 - **Seaborn 0.13.2**: Statistical data visualization
+- **SciPy 1.16.1**: Scientific computing and statistical functions
 - **Jupyter 1.1.1**: Interactive development environment
 
 ## Model Performance
 
-The project compares three Naive Bayes variants:
+The project compares multiple classification algorithms and advanced techniques:
 
-1. **Multinomial Naive Bayes**: Best suited for word count features in text classification
-2. **Gaussian Naive Bayes**: Assumes continuous, normally distributed features
-3. **Bernoulli Naive Bayes**: Optimized for binary feature representations
+### Core Algorithms
+1. **Logistic Regression**: Linear baseline model for performance comparison
+2. **Multinomial Naive Bayes**: Best suited for word count features in text classification
+3. **Gaussian Naive Bayes**: Assumes continuous, normally distributed features
+4. **Bernoulli Naive Bayes**: Optimized for binary feature representations
+5. **Complement Naive Bayes**: Enhanced Multinomial variant designed for imbalanced datasets
 
-Cross-validation results show the relative performance of each algorithm, with detailed accuracy metrics and statistical significance testing.
+### Advanced Techniques
+1. **PCA + Complement Naive Bayes**: Dimensionality reduction pipeline with hyperparameter optimization
+2. **Feature Agglomeration + Complement NB**: Hierarchical feature clustering with multiple linkage methods
+3. **Feature Agglomeration + Multinomial NB**: Alternative clustering approach for comparison
+
+The solution demonstrates systematic hyperparameter optimization using GridSearchCV with stratified cross-validation, providing robust performance estimates and identifying optimal model configurations.
 
 ## Contributing
 
